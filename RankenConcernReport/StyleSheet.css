@@ -20,6 +20,7 @@ header{
     margin: 10px;
     padding: 10px;
 }
+
 .Button {
     background-color: #ed171f;
     border:2px solid black;
@@ -27,12 +28,8 @@ header{
     font-size: 16px;
     color:white;
 }
-/*
-.ListView {
-    background-color: white;
-    border: 1px solid black;
-}
-    */
+
+
 #logo{
     float: left;
 }

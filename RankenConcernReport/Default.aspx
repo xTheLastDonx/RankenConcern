@@ -15,9 +15,11 @@
     </header>
     <form id="form1" runat="server">
     <div>
-    
-        <h2>Please fill out the information below.</h2>
-        <br />
+        <span style="float:left; font-size: 2em; font-weight: bold">Please fill out the information below.</span>
+        <asp:Button ID="Button1" style="float: right" runat="server" OnClick="Button1_Click" Text="Admin Login" />
+    </div>
+        <div style="clear: both;"></div>
+        <div>
         <asp:Label ID="LabelName" runat="server" Text="Name"></asp:Label>
         <br />
         <asp:TextBox ID="TextBoxName" runat="server"></asp:TextBox>
@@ -85,13 +87,15 @@
         <br />
         <asp:Label ID="LabelSubmit" runat="server" Text="Submit your concern by clicking the button below"></asp:Label>
         <br />
-    </div>
+    
         <asp:Button ID="ButtonSubmit" CssClass="Button" runat="server" Text="Submit" OnClick="ButtonSubmit_Click" />
         <br />
         <asp:Label ID="LabelError" runat="server"></asp:Label>
         <br />
 
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RankenConcernConnectionString %>" SelectCommand="SELECT * FROM ConcernTable" InsertCommand="INSERT INTO ConcernTable(Name, Date, Phone, Email, ConcernReported, ConcernMade, ConcernReason, ConcernDetails) VALUES ('@Name'  , '@Date' , '@Phone' , '@Email' ,'@ConcernReported' , '@ConcernMade' ,'@ConcernReason' , '@ConcernDetails')" ></asp:SqlDataSource>
+        </div>
+
     </form>
 </body>
 </html>

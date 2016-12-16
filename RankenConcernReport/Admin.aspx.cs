@@ -36,7 +36,11 @@ public partial class Admin : System.Web.UI.Page
         ListViewName.Visible = false;
         ListView1.Visible = false;
         ListView2.Visible = false;
-
+        TextBoxActionTaken.Enabled = false;
+        TextBoxEmployeeName.Enabled = false;
+        RadioButtonList1.Enabled = false;
+        ButtonSubmit.Enabled = false;
+        LabelSelectFromTable.Visible = false;
     }
 
     protected void ButtonSearch_Click(object sender, EventArgs e)
@@ -114,6 +118,10 @@ public partial class Admin : System.Web.UI.Page
             TextBoxName.Text = "";
             LabelSelectFromTable.Visible = false;
             LabelActionsTaken.Visible = false;
+            TextBoxActionTaken.Enabled = false;
+            TextBoxEmployeeName.Enabled = false;
+            RadioButtonList1.Enabled = false;
+            ButtonSubmit.Enabled = false;
 
 
             LabelSuccess.Text = "Action submitted successfully.";
@@ -139,7 +147,10 @@ public partial class Admin : System.Web.UI.Page
         ListViewName.Visible = true;
 
         LabelActionsTaken.Visible = true;
-
+        TextBoxActionTaken.Enabled = true;
+        TextBoxEmployeeName.Enabled = true;
+        RadioButtonList1.Enabled = true;
+        ButtonSubmit.Enabled = true;
     }
 
     protected void SqlDataSource6_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
@@ -166,6 +177,11 @@ public partial class Admin : System.Web.UI.Page
         ListViewName.Visible = false;
 
         LabelActionsTaken.Visible = true;
+
+        TextBoxActionTaken.Enabled = true;
+        TextBoxEmployeeName.Enabled = true;
+        RadioButtonList1.Enabled = true;
+        ButtonSubmit.Enabled = true;
     }
 
     protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)

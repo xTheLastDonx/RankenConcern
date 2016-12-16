@@ -215,8 +215,7 @@
                 <asp:ControlParameter ControlID="GridViewName" Name="ConcernId" PropertyName="SelectedDataKey.Values[ConcernId]" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
-        
-        <br />
+        <hr />
         <asp:Label ID="LabelActionsTaken" runat="server" Font-Size="X-Large" Text="Actions taken:" Visible="False"></asp:Label>
         
         <asp:ListView ID="ListView1" runat="server" DataKeyNames="ActionId" DataSourceID="SqlDataSource5" Visible="False">
@@ -508,18 +507,18 @@
         </asp:SqlDataSource>
         <asp:Label ID="LabelActionTaken" runat="server" Text="Enter your actions taken to resolve the issue here:"></asp:Label>
         <br />
-        <asp:TextBox ID="TextBoxActionTaken" runat="server" Rows="5" TextMode="MultiLine" Width="635px"></asp:TextBox>
+        <asp:TextBox ID="TextBoxActionTaken" runat="server" Rows="5" TextMode="MultiLine" Width="635px" Enabled="False"></asp:TextBox>
         <br />
         <asp:Label ID="LabelEmployeeName" runat="server" Text="Enter your name here:"></asp:Label>
         <br />
-        <asp:TextBox ID="TextBoxEmployeeName" runat="server" Width="204px"></asp:TextBox>
+        <asp:TextBox ID="TextBoxEmployeeName" runat="server" Width="204px" Enabled="False"></asp:TextBox>
         <br />
         <asp:Label ID="Label1" runat="server" Text="Will this action provide a resolution to the problem?"></asp:Label>
-        <asp:RadioButtonList ID="RadioButtonList1" runat="server" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+        <asp:RadioButtonList ID="RadioButtonList1" runat="server" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" Enabled="False">
             <asp:ListItem>Yes</asp:ListItem>
             <asp:ListItem>No</asp:ListItem>
         </asp:RadioButtonList>
-        <asp:Button ID="ButtonSubmit" CssClass="Button" runat="server" OnClick="ButtonSubmit_Click" Text="Submit" />
+        <asp:Button ID="ButtonSubmit" CssClass="Button" runat="server" OnClick="ButtonSubmit_Click" Text="Submit" Enabled="False" />
         <br />
         <asp:Label ID="LabelSuccess" runat="server" Visible="False"></asp:Label>
     </form>

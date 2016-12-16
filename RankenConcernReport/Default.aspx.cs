@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -60,6 +63,60 @@ public partial class _Default : System.Web.UI.Page
             concern.ExecuteNonQuery();
         }
 
+        //exporting and formatting data for email
+
+        MailMessage mailMsg = new MailMessage();
+
+        mailMsg.From = new MailAddress("ldoncarlos@ranken.edu");
+
+
+        mailMsg.To.Add("Eagudmestad@ranken.edu");
+
+        // '  mailMsg.CC.Add("ccorrigan@ranken.edu")
+
+        // ' mailMsg.CC.Add("cshaw@ranken.edu")
+
+        mailMsg.Subject = TextBoxReasonForConcern.Text + "(Ranken Concern)";
+    
+        mailMsg.IsBodyHtml = true;
+
+        mailMsg.BodyEncoding = Encoding.UTF8;
+
+        mailMsg.Body = "From: " + TextBoxName.Text + "<br />" + "Email: " + TextBoxEmail.Text + "<br />" + "Phone: " + TextBoxPhone.Text + "<br />" + "Message: <br />" + TextBoxConcernDetails.Text;
+
+        mailMsg.Priority = MailPriority.Normal;
+
+
+        //MailMessage userResponseMail = new MailMessage();
+
+        //userResponseMail.From = new MailAddress(TextBoxEmail.Text);
+
+        /*
+        userResponseMail.To.Add("LoganDonCarlos@hotmail.com");
+        userResponseMail.Subject = TextBoxReasonForConcern.Text + "( Ranken Concern)";
+        userResponseMail.IsBodyHtml = true;
+        userResponseMail.BodyEncoding = Encoding.UTF8;
+        userResponseMail.Body = "Thank you " + TextBoxName.Text + ". <br />Your Concern ID is _";
+        userResponseMail.Priority = MailPriority.Normal;
+        */
+
+
+
+        //Smtp configuration
+
+        SmtpClient SmtpClient = new SmtpClient();
+
+        SmtpClient.UseDefaultCredentials = false;
+
+        SmtpClient.Credentials = new NetworkCredential("eagudmesad@ranken.edu", "Hash29Brown!", "mail.ranken.edu");
+
+        SmtpClient.Host = "mail.ranken.edu";
+
+        // '  SmtpClient.EnableSsl = True
+
+        SmtpClient.Send(mailMsg);
+
+
         Response.Redirect("Success.aspx");
     }
 
@@ -71,5 +128,10 @@ public partial class _Default : System.Web.UI.Page
     protected void SqlDataSource1_Selecting1(object sender, SqlDataSourceSelectingEventArgs e)
     {
 
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Logon.aspx");
     }
 }
