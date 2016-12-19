@@ -2,33 +2,44 @@
 <%@ Import Namespace="System.Web.Security" %>
 
 <script runat="server">
-  void Logon_Click(object sender, EventArgs e)
-  {
-    if ((Username.Text == "Admin") && 
-            (UserPass.Text == "admin"))
-      {
-          FormsAuthentication.RedirectFromLoginPage 
-             (Username.Text, Persist.Checked);
-      }
-      else
-      {
-          Msg.Text = "Invalid credentials. Please try again.";
-      }
-  }
+    void Logon_Click(object sender, EventArgs e)
+    {
+        if ((Username.Text == "Admin") &&
+                (UserPass.Text == "admin"))
+        {
+            FormsAuthentication.RedirectFromLoginPage
+               (Username.Text, Persist.Checked);
+        }
+        else
+        {
+            Msg.Text = "Invalid credentials. Please try again.";
+        }
+    }
+
+    protected void ButtonContinue_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Default.aspx");
+    }
 </script>
 <html>
 <head id="Head1" runat="server">
   <title>Login</title>
-    <link href="StyleSheet.css" rel="stylesheet" />
+    <link href="StyleSheet.css"  rel="stylesheet" type="text/css" />
 </head>
 <body>
     <header>
-        <img id="logo" src="/images/RankenLogo.jpg" alt="Ranken Logo" height ="146" width="400" />
+        <img id="logo" src="RankenLogo.jpg" alt="Ranken Logo" height ="146" width="400" />
            <h1 class="title">Concern Report System</h1>
     </header>  
   <form id="form1" runat="server">
-    <h3>
-      Login</h3>
+    <h1>Welcome to Ranken's Concern Report System</h1>
+    <h3>If you would like to submit a concern please click the button below.</h3>
+        
+        <a href="Default.aspx" class="Button" id="Continue">Continue</a>
+      <br />
+      <br />
+        <hr />
+    <h3>Admin Login</h3>
     <table>
       <tr>
         <td>

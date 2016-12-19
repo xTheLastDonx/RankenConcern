@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 public partial class Admin : System.Web.UI.Page
 {
@@ -81,7 +82,7 @@ public partial class Admin : System.Web.UI.Page
 
     protected void ButtonSubmit_Click(object sender, EventArgs e)
     {
-        using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\ConcernDatabase.mdf;Integrated Security=True"))
+        using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["RankenConcernConnectionString"].ToString()))
         {
             SqlCommand action = new SqlCommand("INSERT INTO Actions(ConcernID, ActionTaken, ResolvingEmployee, IsResolved, DateOfResolution) VALUES  (@ConcernID, @ActionTaken, @ResolvingEmployee, @IsResolved, @DateOfResolution)");
             action.CommandType = CommandType.Text;

@@ -4,12 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="StyleSheet.css" />
+    <title>Concern Report</title>
+    <link href="StyleSheet.css"  rel="stylesheet" type="text/css" />
 </head>
 <body>
     <header>
-        <img id="logo" src="/images/RankenLogo.jpg" alt="Ranken Logo" height ="146" width="400" />
+        <img id="logo" src="RankenLogo.jpg" alt="Ranken Logo" height ="146" width="400" />
         <h1 class="title">Concern Report System</h1>
  
     </header>
@@ -51,7 +51,7 @@
         <br />
         <asp:CheckBox ID="CheckBoxFollowUp" runat="server" Text="Does your concern require follow-up?" AutoPostBack="True" OnCheckedChanged="CheckBoxFollowUp_CheckedChanged" />
         <br />
-        <asp:Label ID="LabelContactInfo" runat="server" Text="Contact Info" Visible="False"></asp:Label>
+        <asp:Label ID="LabelContactInfo" runat="server" Text="Contact Info" Visible="False" Font-Size="Large"></asp:Label>
         <br />
         <asp:Label ID="LabelPhone" runat="server" Text="Phone"></asp:Label>
         <br />

@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
+using System.Configuration;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -42,8 +43,9 @@ public partial class _Default : System.Web.UI.Page
 
     protected void ButtonSubmit_Click(object sender, EventArgs e)
     {
-        using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\ConcernDatabase.mdf;Integrated Security=True"))
+        using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["RankenConcernConnectionString"].ToString())) 
         {
+            //ConfigurationManager.ConnectionStrings["SearchConnectionString"].ToString();
             SqlCommand concern = new SqlCommand("INSERT INTO ConcernTable(Name, Date, Phone, Email, Relationship, ConcernReported, ConcernMade, ConcernReason, ConcernDetails) VALUES  (@Name, @Date, @Phone, @Email, @Relationship, @ConcernReported, @ConcernMade, @ConcernReason, @ConcernDetails)");
             concern.CommandType = CommandType.Text;
             concern.Connection = connection;
@@ -81,9 +83,17 @@ public partial class _Default : System.Web.UI.Page
         mailMsg.IsBodyHtml = true;
 
         mailMsg.BodyEncoding = Encoding.UTF8;
+        if (CheckBoxFollowUp.Checked == true)
+        {
 
-        mailMsg.Body = "From: " + TextBoxName.Text + "<br />" + "Email: " + TextBoxEmail.Text + "<br />" + "Phone: " + TextBoxPhone.Text + "<br />" + "Message: <br />" + TextBoxConcernDetails.Text;
+            mailMsg.Body = "From: " + TextBoxName.Text + "<br />" + "Email: " + TextBoxEmail.Text + "<br />" + "Phone: " + TextBoxPhone.Text + "<br />" + "Concern Details: <br />" + TextBoxConcernDetails.Text;
 
+        }
+
+        else
+        {
+            mailMsg.Body = "From: " + TextBoxName.Text + "Concern Details: < br /> " + TextBoxConcernDetails.Text;
+        }
         mailMsg.Priority = MailPriority.Normal;
 
 
